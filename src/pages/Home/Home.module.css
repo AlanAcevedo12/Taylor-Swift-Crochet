@@ -1,0 +1,210 @@
+#background {
+    display: flex;
+    flex-direction: row;
+    /* position: fixed; */
+    z-index: 5;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.column {
+    flex: 1;
+    height: 3rem;
+    transition: 1.5s
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#home {
+    background-color: rgb(0, 0, 0);
+    transition: 1.5s;
+    padding-bottom: 6rem;
+}
+
+#titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    margin-top: 1.5rem;
+    font-size: 2.3rem;
+    transform: scaleY(2);
+    text-align: center;
+    width: fit-content;
+    /* background-color: red; */
+}
+
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    text-align: center;
+    width: fit-content;
+    /* background-color: red; */
+}
+
+h5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    letter-spacing: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 2rem;
+    /* background-color: red; */
+    text-indent: 0.5rem;
+}
+
+#mainPageContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#format {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 1%;
+    padding: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+
+#imageContainer {
+    margin-bottom: 2rem;
+    position: relative;
+    background-color: red;
+    display: flex;
+}
+
+#image {
+    width: 300px;
+    margin: 0;
+}
+
+
+#hideContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    width: 300px;
+
+    /* background-color: red; */
+}
+
+#hideImage {
+    position: absolute;
+    background-color: black;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    width: 300px;
+}
+
+#rangeContainer {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: aqua;
+    opacity: 0;
+}
+
+#range {
+    appearance: slider-vertical;
+    height: 100%;
+    width: 100%;
+    color: none;
+}
+
+#bigImageContainer {
+    display: flex;
+    /* background-color: red; */
+    position: relative;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 6rem;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+#bigImage {
+    width: 100%;
+    margin: auto;
+    /* border-style: solid;
+    border-width: 3px;
+    border-color: black; */
+}
+
+/* #bigImageContainer:hover #bigImage{
+    transform: scale(1.5);
+    transform-origin: 0% 0%;
+} */
+
+#hideBigImageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#hideBigImage {
+    position: absolute;
+    background-color: black;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1024px) {
+    #mainPageContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    #image {
+        width: 80vw;
+    }
+
+    #hideImage {
+        width: 80vw;
+    }
+
+    #hideContainer {
+        width: 80vw;
+    }
+}
