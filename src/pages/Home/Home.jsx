@@ -5,7 +5,35 @@ function Home() {
     const [progress, setProgress] = useState(localStorage.getItem("percentage"));
     const [color, setColor] = useState(localStorage.getItem("color") || "#81dba1");
     const [selected, setSelected] = useState(localStorage.getItem("selected") || "color1");
-    const [audio, setAudio] = useState(new Audio(require("../../assets/Taylor Swift.mp3")))
+    const [audio, setAudio] = useState(new Audio(require("../../assets/Taylor Swift.mp3")));
+    const [table, setTable] = useState(JSON.parse(localStorage.getItem("tableArray")) || []);
+    const [seeMore, setSeeMore] = useState(false);
+
+    // let demo = { id: 0, date: Date.now(), row: 15 };
+    // let demo1 = { id: 1, date: Date.now(), row: 25 };
+    // let demo2 = { id: 2, date: Date.now(), row: 35 };
+
+    // let arrayDemo = [demo, demo1, demo2];
+
+    function seeMoreFunc() {
+        if (seeMore) {
+            setSeeMore(false);
+            return;
+        }
+        if (!seeMore) {
+            setSeeMore(true);
+            return;
+        }
+    }
+
+    function setMark(e) {
+        console.log("adsa")
+        e.preventDefault();
+        let mark = { id: table.length + 1, date: Date.now(), row: progress };
+        let array = table;
+        setTable([...table, mark]);
+        localStorage.setItem("tableArray", JSON.stringify([...table, mark]));
+    }
 
     function colorChange(color) {
         setColor(color);
@@ -18,10 +46,20 @@ function Home() {
         localStorage.setItem("selected", s);
         document.getElementById(s).style.flex = 2;
 
-        if (s === "color6" || s === "color10")
+        if (s === "color6" || s === "color10") {
             document.getElementsByTagName("body")[0].style.color = "white";
-        else
+            Array.from(document.getElementsByClassName("botones")).map((o) => {
+                o.style.color = "white";
+                o.style.borderColor = "white";
+            })
+        }
+        else{
             document.getElementsByTagName("body")[0].style.color = "black";
+            Array.from(document.getElementsByClassName("botones")).map((o) => {
+                o.style.color = "black";
+                o.style.borderColor = "black";
+            })
+        }           
 
         //---- Audio ---
         let era = "";
@@ -44,6 +82,25 @@ function Home() {
     useEffect(() => {
         document.getElementById(selected).style.flex = 2;
         document.getElementsByClassName("home")[0].style.backgroundColor = color;
+
+        if (selected === "color6" || selected === "color10") {
+            document.getElementsByTagName("body")[0].style.color = "white";
+            document.getElementsByTagName("input")[0].style.color = "white";
+            document.getElementsByTagName("input")[0].style.borderColor = "white";
+            Array.from(document.getElementsByClassName("botones")).map((o) => {
+                o.style.color = "white";
+                o.style.borderColor = "white";
+            })
+        }
+        else{
+            document.getElementsByTagName("body")[0].style.color = "black";
+            document.getElementsByTagName("input")[0].style.color = "black";
+            document.getElementsByTagName("input")[0].style.borderColor = "black";
+            Array.from(document.getElementsByClassName("botones")).map((o) => {
+                o.style.color = "black";
+                o.style.borderColor = "black";
+            })
+        }     
     }, [color])
 
     function onChangeHandler(e) {
@@ -146,6 +203,7 @@ function Home() {
                     <h4>
                         {progress * 122} Stitches
                     </h4>
+                    <button id={styles.buttons} className="botones" onClick={(e) => setMark(e)}>Add</button>
                 </div>
                 <div id={styles.imageContainer}>
                     <img id={styles.image} src={require("../../assets/Pattern.jpg")} />
@@ -157,6 +215,39 @@ function Home() {
                                 onChange={onChangeHandler} ></input>
                         </div>
                     </div>
+                </div>
+                <div id={styles.tableContainer}>
+                    <h3>
+                        Daymark
+                    </h3>
+                    <div id={styles.table}>
+                        <div className={styles.tableRow}>
+                            <h5 className={styles.id}>#</h5>
+                            <h5 className={styles.date}>Date</h5>
+                            <h5 className={styles.row}>Row</h5>
+                            <h5 className={styles.progress}>Progress</h5>
+                        </div>
+                        {
+                            table.toReversed().map((i, k) => {
+                                if (!seeMore && k >= 10) return;
+                                return (
+                                    <div className={styles.tableRow} key={k}>
+                                        <h5 className={styles.id}>{i.id}</h5>
+                                        <h5 className={styles.date}>
+                                            {new Date(i.date).getDate()}/
+                                            {(new Date(i.date).getMonth() < 10 ? '' : '') + new Date(i.date).getMonth() + 1}/
+                                            {new Date(i.date).getUTCFullYear() + " - "}
+                                            {new Date(i.date).getHours()}:
+                                            {(new Date(i.date).getMinutes() < 10 ? '0' : '') + new Date(i.date).getMinutes()}
+                                        </h5>
+                                        <h5 className={styles.row}>{i.row}</h5>
+                                        <h5 className={styles.progress}>{calculatePercentage(i.row).toFixed(1)}% </h5>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <button id={styles.buttons} className="botones" onClick={() => { seeMoreFunc() }}>{!seeMore ? "See More" : "See Less"}</button>
                 </div>
             </div>
             <br /> <br /><br />

@@ -67,10 +67,22 @@ h5 {
     text-indent: 0.5rem;
 }
 
+input{
+    height: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    transition: 1.5s;
+}
+
 #mainPageContainer {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
 }
 
@@ -79,9 +91,10 @@ h5 {
     border-width: 2px;
     border-radius: 1%;
     padding: 2rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
     background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 2rem;
 }
 
 h3 {
@@ -98,7 +111,7 @@ h4 {
 #imageContainer {
     margin-bottom: 2rem;
     position: relative;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
 }
 
@@ -106,6 +119,7 @@ h4 {
     width: 300px;
     margin: 0;
 }
+
 
 
 #hideContainer {
@@ -144,6 +158,7 @@ h4 {
     width: 100%;
     color: none;
 }
+
 
 #bigImageContainer {
     display: flex;
@@ -187,11 +202,91 @@ h4 {
     width: 100%;
 }
 
+#tableContainer {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 1%;
+    width: 25rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#table {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    /* background-color: antiquewhite; */
+
+}
+
+.tableRow {
+    display: flex;
+    flex-direction: row;
+    /* background-color: aqua; */
+    height: 2rem;
+    width: 100%;
+    letter-spacing: -5;
+}
+
+.id {
+    /* background-color: green; */
+    width: 2rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    text-align: left;
+    letter-spacing: 0;
+}
+
+.date {
+    /* background-color: green; */
+    width: 11rem;
+    margin-right: 0.5rem;
+    height: 1rem;
+    text-align: left;
+    letter-spacing: 0;
+}
+
+.row {
+    /* background-color: green; */
+    width: 3rem;
+    margin-right: 0.5rem;
+    height: 1rem;
+    text-align: left;
+    letter-spacing: 0;
+}
+
+.progress {
+    /* background-color: green; */
+    width: 4rem;
+    height: 1rem;
+    text-align: left;
+    letter-spacing: 0;
+}
+
+#buttons{
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border-style: solid;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    transition: 1.5s;
+}
+
+#buttons:hover{
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 1024px) {
     #mainPageContainer {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
         justify-content: space-around;
     }
