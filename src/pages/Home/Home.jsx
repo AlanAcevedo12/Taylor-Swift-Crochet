@@ -15,6 +15,11 @@ function Home() {
 
     // let arrayDemo = [demo, demo1, demo2];
 
+    function deleteMark(id) {
+        setTable([...table.filter((t) => t.id !== id)]);
+        localStorage.setItem("tableArray", JSON.stringify([...table.filter((t) => t.id !== id)]));
+    }
+
     function seeMoreFunc() {
         if (seeMore) {
             setSeeMore(false);
@@ -53,13 +58,13 @@ function Home() {
                 o.style.borderColor = "white";
             })
         }
-        else{
+        else {
             document.getElementsByTagName("body")[0].style.color = "black";
             Array.from(document.getElementsByClassName("botones")).map((o) => {
                 o.style.color = "black";
                 o.style.borderColor = "black";
             })
-        }           
+        }
 
         //---- Audio ---
         let era = "";
@@ -92,7 +97,7 @@ function Home() {
                 o.style.borderColor = "white";
             })
         }
-        else{
+        else {
             document.getElementsByTagName("body")[0].style.color = "black";
             document.getElementsByTagName("input")[0].style.color = "black";
             document.getElementsByTagName("input")[0].style.borderColor = "black";
@@ -100,7 +105,7 @@ function Home() {
                 o.style.color = "black";
                 o.style.borderColor = "black";
             })
-        }     
+        }
     }, [color])
 
     function onChangeHandler(e) {
@@ -206,7 +211,7 @@ function Home() {
                     <button id={styles.buttons} className="botones" onClick={(e) => setMark(e)}>Add</button>
                 </div>
                 <div id={styles.imageContainer}>
-                    <img id={styles.image} src={require("../../assets/Pattern.jpg")} />
+                    <img id={styles.image} src={require("../../assets/Version-final.jpg")} />
                     <div id={styles.hideContainer}>
                         <div id={styles.hideImage} style={{ height: (100 - calculatePercentage(progress)) + "%" }} className="hideImage"></div>
                         <div id={styles.rangeContainer} className="rangeContainer" style={{ width: "100%" }}>
@@ -226,6 +231,7 @@ function Home() {
                             <h5 className={styles.date}>Date</h5>
                             <h5 className={styles.row}>Row</h5>
                             <h5 className={styles.progress}>Progress</h5>
+                            <h5 className={styles.close}></h5>
                         </div>
                         {
                             table.toReversed().map((i, k) => {
@@ -242,6 +248,7 @@ function Home() {
                                         </h5>
                                         <h5 className={styles.row}>{i.row}</h5>
                                         <h5 className={styles.progress}>{calculatePercentage(i.row).toFixed(1)}% </h5>
+                                        <h5 className={styles.close} onClick={() => deleteMark(i.id)}>X</h5>
                                     </div>
                                 )
                             })
@@ -258,7 +265,7 @@ function Home() {
                 <div id={styles.hideBigImageContainer}>
                     <div id={styles.hideBigImage} style={{ height: (100 - calculatePercentage(progress)) + "%" }}></div>
                 </div>
-                <img id={styles.bigImage} src={require("../../assets/Pattern.jpg")} />
+                <img id={styles.bigImage} src={require("../../assets/Version-final.jpg")} />
             </div>
         </div>
 
