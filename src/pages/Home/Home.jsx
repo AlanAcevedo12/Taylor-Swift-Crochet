@@ -241,7 +241,7 @@ function Home() {
                                         <h5 className={styles.id}>{i.id}</h5>
                                         <h5 className={styles.date}>
                                             {new Date(i.date).getDate()}/
-                                            {(new Date(i.date).getMonth() < 10 ? '' : '') + new Date(i.date).getMonth() + 1}/
+                                            {(new Date(i.date).getMonth() < 10 ? '0' : '') + (new Date(i.date).getMonth() + 1)}/
                                             {new Date(i.date).getUTCFullYear() + " - "}
                                             {new Date(i.date).getHours()}:
                                             {(new Date(i.date).getMinutes() < 10 ? '0' : '') + new Date(i.date).getMinutes()}
