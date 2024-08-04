@@ -1,3 +1,19 @@
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 32px; /* 1rem = 16px */
+  }
+}
+
+@media (min-width: 769px) {
+  html {
+    font-size: 24px; /* 1rem = 16px */
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,7 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  font-family: Varela;
+  font-family: HP;
 
   user-select: none;
 
@@ -14,7 +30,42 @@ body {
   --blueColor: #132d46;
   --aquaColor: #01c38e;
   --whiteColor: #e5e1d6;
+  /* background-image: linear-gradient(to right top, #010d21, #0b233d, #113a5c, #14517c, #0d6b9d);
+   */
+  background-image: url("./assets/fondo.png");
+  background-size: cover;
+  -webkit-animation: backgroundSwing 100s infinite linear;
+  animation: backgroundSwing 100s infinite linear;
 
+  min-height: 100vh;
+}
+
+@-webkit-keyframes backgroundSwing {
+  0% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+@keyframes backgroundSwing {
+  0% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
 }
 
 code {
@@ -29,4 +80,19 @@ h1 {
 @font-face {
   font-family: Varela;
   src: url("./assets/VarelaRound-Regular.ttf");
+}
+
+@font-face {
+  font-family: HP;
+  src: url("./assets/forgotten_uncial.ttf")
+}
+
+@font-face {
+  font-family: HP2;
+  src: url("./assets/Torquemada One Regular.ttf")
+}
+
+@font-face {
+  font-family: HPCarta;
+  src: url("./assets/DearMrPotter-Regular.otf")
 }
